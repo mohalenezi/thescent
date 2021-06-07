@@ -12,3 +12,29 @@
   font-size: calc(10px + 6vmin);
   color: white;
 }
+
+.perfume-image {
+  margin: 10px;
+}
+
+.perfume {
+  text-align: center;
+}
+
+.perfume-image {
+  width: 200px;
+  height: 200px;
+}
+
+.shop-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

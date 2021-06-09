@@ -1,15 +1,13 @@
 import perfumes from "../products";
-import PerfumeItem from "./PerfumeItem"
+import { ListWrapper } from "../styles";
+import PerfumeItem from "./PerfumeItem";
 
 const PerfumeList = () => {
-    const perfumesList = perfumes.map((perfume) => (
-    <PerfumeItem 
-    perfume={perfume}
-    key={perfume.id}
-    />
-    ));
-    console.log(perfumesList)
-    return <div className="list">{perfumesList}</div>
+  const perfumesList = perfumes.map((perfume) => (
+    <PerfumeItem perfume={perfume} key={perfume.id} />
+  ));
+  console.log(perfumesList);
+  return <ListWrapper>{perfumesList}</ListWrapper>;
 };
 
-export default PerfumeList
+export default PerfumeList;

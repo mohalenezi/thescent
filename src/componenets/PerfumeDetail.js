@@ -6,7 +6,7 @@ const PerfumeDetail = (props) => {
       <img src={props.perfume.image} alt={props.perfume.name} />
       <p>{props.perfume.name}</p>
       <p>{props.perfume.description}</p>
-      <p>{props.perfume.price}</p>
+      <p>{props.perfume.price} KD</p>
     </DetailWrapper>
   );
 };

@@ -26,6 +26,7 @@ export const Title = styled.h1`
 
 export const Description = styled.h3`
   text-align: center;
+  font-size: 40px;
 `;
 
 export const ShopImage = styled.img`
@@ -86,5 +87,6 @@ export const DetailWrapper = styled.div`
 
   p {
     vertical-align: middle;
+    font-size: 30px;
   }
 `;

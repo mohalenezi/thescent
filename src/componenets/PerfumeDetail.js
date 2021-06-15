@@ -1,5 +1,5 @@
 import { DetailWrapper } from "../styles";
-
+import DeleteButton from "./buttons/DeleteButton";
 const PerfumeDetail = (props) => {
   return (
     <DetailWrapper>
@@ -7,6 +7,12 @@ const PerfumeDetail = (props) => {
       <p>{props.perfume.name}</p>
       <p>{props.perfume.description}</p>
       <p>{props.perfume.price} KD</p>
+      <DeleteButton
+        perfumeDelete={props.perfumeDelete}
+        perfumeId={props.perfume.id}
+        setPerfume={props.setPerfume}
+      />
+      <button onClick={() => props.setPerfume(null)}>Back</button>
     </DetailWrapper>
   );
 };

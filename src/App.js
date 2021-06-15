@@ -17,16 +17,26 @@ const theme = {
   light: {
     mainColor: "grey",
     backgroundColor: "lightyellow",
+    red: "red",
   },
   dark: {
     mainColor: "lightyellow",
     backgroundColor: "grey",
+    red: "red",
   },
 };
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [perfume, setPerfume] = useState(null);
+  const [_perfumes, setPerfumes] = useState(perfumes);
+
+  const perfumeDelete = (perfumeId) => {
+    const updatedPerfumes = _perfumes.filter(
+      (perfume) => perfume.id !== perfumeId
+    );
+    setPerfume(updatedPerfumes);
+  };
 
   const toggleTheme = () => {
     if (currentTheme === "light") setCurrentTheme("dark");
@@ -34,9 +44,17 @@ function App() {
   };
   const setView = () => {
     return perfume ? (
-      <PerfumeDetail perfume={perfume} />
+      <PerfumeDetail
+        perfume={perfume}
+        setPerfume={setPerfume}
+        perfumeDelete={perfumeDelete}
+      />
     ) : (
-      <PerfumeList setPerfume={setPerfume} />
+      <PerfumeList
+        setPerfume={setPerfume}
+        perfumes={_perfumes}
+        perfumeDelete={perfumeDelete}
+      />
     );
   };
 

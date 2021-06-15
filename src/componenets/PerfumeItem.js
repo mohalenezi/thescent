@@ -1,20 +1,22 @@
 import { DeletButtonStyled, PerfumeWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
 
-const PerfumeITem = (props) => {
+const PerfumeItem = (props) => {
   // const perfume= props.perfume
   return (
-    <PerfumeWrapper onClick={() => props.setPerfume(props.perfume)}>
-      <img alt={props.name} src={props.perfume.image} />
-      <p>{props.perfume.name}</p>
-      <p>{props.perfume.price} KD</p>
+    <div>
+      <PerfumeWrapper onClick={() => props.setPerfume(props.perfume)}>
+        <img alt={props.name} src={props.perfume.image} />
+        <p>{props.perfume.name}</p>
+        <p>{props.perfume.price} KD</p>
+      </PerfumeWrapper>
       <DeleteButton
         perfumeDelete={props.perfumeDelete}
         perfumeId={props.perfume.id}
         setPerfume={props.setPerfume}
       />
-    </PerfumeWrapper>
+    </div>
   );
 };
 
-export default PerfumeITem;
+export default PerfumeItem;

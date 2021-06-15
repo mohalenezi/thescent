@@ -90,6 +90,6 @@ export const DetailWrapper = styled.div`
     font-size: 30px;
   }
 `;
-export const DeletButtonStyled = styled.input`
+export const DeletButtonStyled = styled.button`
   color: ${(props) => props.theme.red};
 `;

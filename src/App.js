@@ -29,13 +29,13 @@ const theme = {
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
   const [perfume, setPerfume] = useState(null);
-  const [_perfumes, setPerfumes] = useState(perfumes);
+  const [_newperfume, setNewPerfume] = useState(perfumes);
 
   const perfumeDelete = (perfumeId) => {
-    const updatedPerfumes = _perfumes.filter(
+    const updatedPerfumes = _newperfume.filter(
       (perfume) => perfume.id !== perfumeId
     );
-    setPerfume(updatedPerfumes);
+    setNewPerfume(updatedPerfumes);
   };
 
   const toggleTheme = () => {
@@ -52,7 +52,7 @@ function App() {
     ) : (
       <PerfumeList
         setPerfume={setPerfume}
-        perfumes={_perfumes}
+        perfumes={_newperfume}
         perfumeDelete={perfumeDelete}
       />
     );

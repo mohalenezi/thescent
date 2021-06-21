@@ -1,20 +1,27 @@
 import { DetailWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
+
+import { useParams, Redirect } from "react-router-dom";
+
 const PerfumeDetail = (props) => {
+  const perfumeId = useParams().perfumeId;
+  const perfume = props.perfumes.find((perfume) => perfume.id === +perfumeId);
+
+  if (!perfume) return <Redirect to="/perfumes" />;
   return (
     <div>
       <DetailWrapper>
-        <img src={props.perfume.image} alt={props.perfume.name} />
-        <p>{props.perfume.name}</p>
-        <p>{props.perfume.description}</p>
-        <p>{props.perfume.price} KD</p>
-        <button onClick={() => props.setPerfume(null)}>Back</button>
+        <img src={perfume.image} alt={perfume.name} />
+        <p>{perfume.name}</p>
+        <p>{perfume.description}</p>
+        <p>{perfume.price} KD</p>
+
+        <DeleteButton
+          perfumeDelete={props.perfumeDelete}
+          perfumeId={perfume.id}
+        />
+        <button>Back</button>
       </DetailWrapper>
-      <DeleteButton
-        perfumeDelete={props.perfumeDelete}
-        perfumeId={props.perfume.id}
-        setPerfume={props.setPerfume}
-      />
     </div>
   );
 };

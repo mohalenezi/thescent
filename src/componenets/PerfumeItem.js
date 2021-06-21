@@ -1,20 +1,23 @@
 import { DeletButtonStyled, PerfumeWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
+import { Link } from "react-router-dom";
 
 const PerfumeItem = (props) => {
   // const perfume= props.perfume
   return (
     <div>
-      <PerfumeWrapper onClick={() => props.setPerfume(props.perfume)}>
-        <img alt={props.name} src={props.perfume.image} />
+      <PerfumeWrapper>
+        <Link to={`/perfumes/${props.perfume.id}`}>
+          <img alt={props.perfume.name} src={props.perfume.image} />
+        </Link>
         <p>{props.perfume.name}</p>
         <p>{props.perfume.price} KD</p>
+
+        <DeleteButton
+          perfumeDelete={props.perfumeDelete}
+          perfumeId={props.perfume.id}
+        />
       </PerfumeWrapper>
-      <DeleteButton
-        perfumeDelete={props.perfumeDelete}
-        perfumeId={props.perfume.id}
-        setPerfume={props.setPerfume}
-      />
     </div>
   );
 };

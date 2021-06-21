@@ -15,7 +15,6 @@ const PerfumeList = (props) => {
       <PerfumeItem
         perfume={perfume}
         key={perfume.id}
-        setPerfume={props.setPerfume}
         perfumeDelete={props.perfumeDelete}
       />
     ));

@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -8,6 +9,26 @@ body {
 P {
     font-style: italic;
 }
+`;
+
+export const Navstyled = styled.nav`
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const logo = styled(Link)`
+  padding: 0.75em;
+
+  img {
+    width: 8rem;
+  }
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+  margin: 10px;
+
+  &.active {
+    color: ${(props) => props.theme.red};
+  }
 `;
 
 export const Title = styled.h1`

@@ -2,7 +2,7 @@ import { DetailWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
 
 import { useParams, Redirect } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 const PerfumeDetail = (props) => {
   const perfumeId = useParams().perfumeId;
   const perfume = props.perfumes.find((perfume) => perfume.id === +perfumeId);
@@ -20,7 +20,9 @@ const PerfumeDetail = (props) => {
           perfumeDelete={props.perfumeDelete}
           perfumeId={perfume.id}
         />
-        <button>Back</button>
+        <Link to="/perfumes">
+          <button>back</button>
+        </Link>
       </DetailWrapper>
     </div>
   );

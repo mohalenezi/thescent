@@ -4,8 +4,10 @@ import DeleteButton from "./buttons/DeleteButton";
 import { useParams, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 const PerfumeDetail = (props) => {
-  const perfumeId = useParams().perfumeId;
-  const perfume = props.perfumes.find((perfume) => perfume.id === +perfumeId);
+  const perfumeSlug = useParams().perfumeSlug;
+  const perfume = props.perfumes.find(
+    (perfume) => perfume.slug === perfumeSlug
+  );
 
   if (!perfume) return <Redirect to="/perfumes" />;
   return (

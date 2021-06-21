@@ -7,7 +7,7 @@ const PerfumeItem = (props) => {
   return (
     <div>
       <PerfumeWrapper>
-        <Link to={`/perfumes/${props.perfume.id}`}>
+        <Link to={`/perfumes/${props.perfume.slug}`}>
           <img alt={props.perfume.name} src={props.perfume.image} />
         </Link>
         <p>{props.perfume.name}</p>
@@ -15,7 +15,7 @@ const PerfumeItem = (props) => {
 
         <DeleteButton
           perfumeDelete={props.perfumeDelete}
-          perfumeId={props.perfume.id}
+          perfumId={props.perfume.id}
         />
       </PerfumeWrapper>
     </div>

@@ -45,7 +45,7 @@ function App() {
         <GlobalStyle />
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
         <Switch>
-          <Route path="/perfumes/:perfumeId">
+          <Route path="/perfumes/:perfumeSlug">
             <PerfumeDetail
               perfumes={_newperfume}
               perfumeDelete={perfumeDelete}

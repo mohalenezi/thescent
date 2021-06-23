@@ -4,7 +4,6 @@ import PerfumeList from "./componenets/PerfumeList";
 import { GlobalStyle } from "./styles";
 import { useState } from "react";
 import PerfumeDetail from "./componenets/PerfumeDetail";
-import perfumes from "./products";
 import Home from "./componenets/Home";
 
 import { Route, Switch } from "react-router";
@@ -25,14 +24,6 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [_newperfume, setNewPerfume] = useState(perfumes);
-
-  const perfumeDelete = (perfumeId) => {
-    const updatedPerfumes = _newperfume.filter(
-      (perfume) => perfume.id !== perfumeId
-    );
-    setNewPerfume(updatedPerfumes);
-  };
 
   const toggleTheme = () => {
     if (currentTheme === "light") setCurrentTheme("dark");
@@ -46,13 +37,10 @@ function App() {
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
         <Switch>
           <Route path="/perfumes/:perfumeSlug">
-            <PerfumeDetail
-              perfumes={_newperfume}
-              perfumeDelete={perfumeDelete}
-            />
+            <PerfumeDetail />
           </Route>
           <Route path="/perfumes">
-            <PerfumeList perfumes={_newperfume} perfumeDelete={perfumeDelete} />
+            <PerfumeList />
           </Route>
           <Route exact path="/">
             <Home />

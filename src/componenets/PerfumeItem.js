@@ -3,7 +3,6 @@ import DeleteButton from "./buttons/DeleteButton";
 import { Link } from "react-router-dom";
 
 const PerfumeItem = (props) => {
-  // const perfume= props.perfume
   return (
     <div>
       <PerfumeWrapper>
@@ -13,10 +12,7 @@ const PerfumeItem = (props) => {
         <p>{props.perfume.name}</p>
         <p>{props.perfume.price} KD</p>
 
-        <DeleteButton
-          perfumeDelete={props.perfumeDelete}
-          perfumId={props.perfume.id}
-        />
+        <DeleteButton perfumeId={props.perfume.id} />
       </PerfumeWrapper>
     </div>
   );

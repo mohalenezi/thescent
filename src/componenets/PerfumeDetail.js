@@ -1,11 +1,18 @@
+import { observer } from "mobx-react";
+
+//style
 import { DetailWrapper } from "../styles";
+//components
 import DeleteButton from "./buttons/DeleteButton";
 
+//router class
 import { useParams, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-const PerfumeDetail = (props) => {
+import perfumeStore from "../stores/perfumeStore";
+
+const PerfumeDetail = () => {
   const perfumeSlug = useParams().perfumeSlug;
-  const perfume = props.perfumes.find(
+  const perfume = perfumeStore.perfumes.find(
     (perfume) => perfume.slug === perfumeSlug
   );
 
@@ -18,10 +25,7 @@ const PerfumeDetail = (props) => {
         <p>{perfume.description}</p>
         <p>{perfume.price} KD</p>
 
-        <DeleteButton
-          perfumeDelete={props.perfumeDelete}
-          perfumeId={perfume.id}
-        />
+        <DeleteButton perfumeId={perfume.id} />
         <Link to="/perfumes">
           <button>back</button>
         </Link>
@@ -30,4 +34,4 @@ const PerfumeDetail = (props) => {
   );
 };
 
-export default PerfumeDetail;
+export default observer(PerfumeDetail);

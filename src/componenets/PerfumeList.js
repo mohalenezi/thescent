@@ -1,23 +1,20 @@
 // import perfumes from "../products";
+import perfumeStore from "../stores/perfumeStore";
+import { observer } from "mobx-react";
+
 import { ListWrapper } from "../styles";
 import PerfumeItem from "./PerfumeItem";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 
-const PerfumeList = (props) => {
+const PerfumeList = () => {
   const [querry, setQuerry] = useState("");
 
-  const perfumesList = props.perfumes
+  const perfumesList = perfumeStore.perfumes
     .filter((perfume) =>
       perfume.name.toLocaleLowerCase().includes(querry.toLocaleLowerCase())
     )
-    .map((perfume) => (
-      <PerfumeItem
-        perfume={perfume}
-        key={perfume.id}
-        perfumeDelete={props.perfumeDelete}
-      />
-    ));
+    .map((perfume) => <PerfumeItem perfume={perfume} key={perfume.id} />);
 
   return (
     <div>
@@ -27,4 +24,4 @@ const PerfumeList = (props) => {
   );
 };
 
-export default PerfumeList;
+export default observer(PerfumeList);

@@ -1,6 +1,9 @@
 import React from "react";
+//style
 import { ThemeButton, NavLinkStyled, logo } from "../styles";
-import lightLogo from "../images/theWhite.gif";
+
+//themes logo
+import lightLogo from "../images/untitled.svg";
 import darkLogo from "../images/theblk.gif";
 
 function NavBar(props) {

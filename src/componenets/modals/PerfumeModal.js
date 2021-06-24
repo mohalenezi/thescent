@@ -5,12 +5,16 @@ import { CreateButtonStyled } from "../../styles";
 import perfumeStore from "../../stores/perfumeStore";
 
 const PerfumeModal = (props) => {
-  const [perfume, setPerfume] = useState({
-    name: "",
-    description: "",
-    price: 0,
-    image: "",
-  });
+  const [perfume, setPerfume] = useState(
+    props.previousPerfume
+      ? props.previousPerfume
+      : {
+          name: "",
+          description: "",
+          price: 0,
+          image: "",
+        }
+  );
 
   const handleChange = (event) => {
     setPerfume({ ...perfume, [event.target.name]: event.target.value });
@@ -21,7 +25,8 @@ const PerfumeModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    perfumeStore.perfumeCreate(perfume);
+    if (props.previousPerfume) perfumeStore.perfumeUpdate(perfume);
+    else perfumeStore.perfumeCreate(perfume);
     props.closeModal();
   };
 
@@ -41,6 +46,7 @@ const PerfumeModal = (props) => {
                 type="text"
                 onChange={handleChange}
                 name="name"
+                value={perfume.name}
               />
             </div>
             <div className="form-group">
@@ -50,6 +56,7 @@ const PerfumeModal = (props) => {
                 type="text"
                 onChange={handleChange}
                 name="description"
+                value={perfume.description}
               />
             </div>
             <div className="col-6">
@@ -60,6 +67,7 @@ const PerfumeModal = (props) => {
                 min="1"
                 onChange={handleChange}
                 name="price"
+                value={perfume.price}
               />
             </div>
           </div>
@@ -70,9 +78,12 @@ const PerfumeModal = (props) => {
               type="text"
               onChange={handleChange}
               name="image"
+              value={perfume.image}
             />
           </div>
-          <CreateButtonStyled>Add perfume</CreateButtonStyled>
+          <CreateButtonStyled>
+            {props.previousPerfume ? "update" : "Add"} perfume
+          </CreateButtonStyled>
         </form>
       </Modal>
     </div>

@@ -19,6 +19,17 @@ class PerfumeStore {
     newPerfume.slug = slugify(newPerfume.name);
     this.perfumes.push(newPerfume);
   };
+
+  perfumeUpdate = (updatePerfume) => {
+    const perfume = this.perfumes.find(
+      (perfume) => perfume.id === updatePerfume.id
+    );
+    perfume.name = updatePerfume.name;
+    perfume.description = updatePerfume.description;
+    perfume.price = updatePerfume.price;
+    perfume.image = updatePerfume.image;
+    perfume.slug = slugify(updatePerfume.name);
+  };
 }
 
 const perfumeStore = new PerfumeStore();

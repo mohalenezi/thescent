@@ -163,3 +163,14 @@ export const CreateButtonStyled = styled.button`
   display: inline-block;
   font-size: 16px;
 `;
+
+export const UpdateButtonStyled = styled.button`
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+`;

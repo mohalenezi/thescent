@@ -1,6 +1,6 @@
 import perfumes from "../products";
 import { makeAutoObservable } from "mobx";
-
+import slugify from "react-slugify";
 class PerfumeStore {
   perfumes = perfumes;
 
@@ -12,6 +12,12 @@ class PerfumeStore {
       (perfume) => perfume.id !== perfumeId
     );
     this.perfumes = updatedPerfumes;
+  };
+
+  perfumeCreate = (newPerfume) => {
+    newPerfume.id = this.perfumes.length + 1;
+    newPerfume.slug = slugify(newPerfume.name);
+    this.perfumes.push(newPerfume);
   };
 }
 

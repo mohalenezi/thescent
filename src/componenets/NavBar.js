@@ -1,18 +1,17 @@
 import React from "react";
 //style
-import { ThemeButton, NavLinkStyled, logo } from "../styles";
+import { ThemeButton, NavLinkStyled, logo, LogoImage } from "../styles";
 
 //themes logo
-import lightLogo from "../images/untitled.svg";
-import darkLogo from "../images/theblk.gif";
+import lightLogo from "../images/wTheme.png";
+import darkLogo from "../images/bTheme.png";
 
 function NavBar(props) {
   return (
     <div>
       <logo to="/">
-        <img
+        <LogoImage
           src={props.currentTheme === "light" ? lightLogo : darkLogo}
-          width="500"
         />
       </logo>
       <NavLinkStyled to="/perfumes">Perfumes</NavLinkStyled>

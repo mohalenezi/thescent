@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { Link, NavLink } from "react-router-dom";
+import { AiFillPlusCircle } from "react-icons/ai";
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -15,16 +16,30 @@ export const Navstyled = styled.nav`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
+export const AiFillPlusCircleStyled = styled(AiFillPlusCircle)`
+  color: ${(props) => props.theme.mainColor};
+  margin-left: 70%;
+`;
+
 export const logo = styled(Link)`
-  padding: 0.75em;
+  padding: 10em;
 
   img {
-    width: 8rem;
+    width: 50%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
 export const NavLinkStyled = styled(NavLink)`
-  margin: 10px;
+  box-sizing: content-box;
+  width: 50%;
+  display: block;
+  align-text: center;
+  margin-left: 50%;
+  font-size: 30px;
 
   &.active {
     color: ${(props) => props.theme.red};
@@ -57,17 +72,34 @@ export const ShopImage = styled.img`
   width: 50%;
 `;
 
+export const LogoImage = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+`;
+
 export const ListWrapper = styled.div`
+  box-sizing: content-box;
+  width: 100%;
+
+  padding: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const PerfumeWrapper = styled.div`
-  margin: 10px;
+  margin: 4vw;
+  box-sizing: content-box;
+  width: 100%;
+
   img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   p {
     text-align: center;
@@ -75,6 +107,12 @@ export const PerfumeWrapper = styled.div`
   p:last-child {
     text-align: center;
     color: red;
+  }
+  Button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    button-size: 10%;
   }
 `;
 export const ThemeButton = styled.button`
@@ -113,4 +151,15 @@ export const DetailWrapper = styled.div`
 `;
 export const DeletButtonStyled = styled.button`
   color: ${(props) => props.theme.red};
+`;
+
+export const CreateButtonStyled = styled.button`
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 `;

@@ -11,12 +11,12 @@ import NavBar from "./componenets/NavBar";
 
 const theme = {
   light: {
-    mainColor: "grey",
-    backgroundColor: "lightyellow",
+    mainColor: "black",
+    backgroundColor: "#6d8ead",
     red: "red",
   },
   dark: {
-    mainColor: "lightyellow",
+    mainColor: "white",
     backgroundColor: "grey",
     red: "red",
   },

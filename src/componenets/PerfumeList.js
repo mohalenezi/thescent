@@ -2,13 +2,18 @@
 import perfumeStore from "../stores/perfumeStore";
 import { observer } from "mobx-react";
 
-import { ListWrapper } from "../styles";
+import { ListWrapper, AiFillPlusCircleStyled } from "../styles";
 import PerfumeItem from "./PerfumeItem";
+import PerfumeModal from "./modals/PerfumeModal";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 
 const PerfumeList = () => {
   const [querry, setQuerry] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   const perfumesList = perfumeStore.perfumes
     .filter((perfume) =>
@@ -19,6 +24,8 @@ const PerfumeList = () => {
   return (
     <div>
       <SearchBar setQuerry={setQuerry} />
+      <AiFillPlusCircleStyled size="5em" onClick={openModal} />
+      <PerfumeModal isOpen={isOpen} closeModal={closeModal} />
       <ListWrapper>{perfumesList}</ListWrapper>;
     </div>
   );

@@ -38,8 +38,8 @@ export const NavLinkStyled = styled(NavLink)`
   width: 50%;
   display: block;
   align-text: center;
-  margin-left: 50%;
-  font-size: 30px;
+  margin-left: 70%;
+  font-size: 2em;
 
   &.active {
     color: ${(props) => props.theme.red};
@@ -116,8 +116,9 @@ export const PerfumeWrapper = styled.div`
   }
 `;
 export const ThemeButton = styled.button`
-  font-size: 1em;
-  margin: 1.25em;
+  font-size: 2em;
+  margin-left: 70%;
+  ${"" /* margin: 1.25em; */}
   padding: 0.25em 1em;
   border-radius: 3px;
   background-color: ${(props) => props.theme.mainColor};

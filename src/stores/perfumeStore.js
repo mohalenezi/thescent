@@ -18,17 +18,30 @@ class PerfumeStore {
       console.log("fetchPerfumes: ", error);
     }
   };
-  perfumeDelete = (perfumeId) => {
-    const updatedPerfumes = this.perfumes.filter(
-      (perfume) => perfume.id !== perfumeId
-    );
-    this.perfumes = updatedPerfumes;
+  perfumeDelete = async (perfumeId) => {
+    try {
+      await axios.delete(`http://localhost:8000/perfumes/${perfumeId}`);
+      const updatedPerfumes = this.perfumes.filter(
+        (perfume) => perfume.id !== perfumeId
+      );
+      this.perfumes = updatedPerfumes;
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  perfumeCreate = (newPerfume) => {
-    newPerfume.id = this.perfumes.length + 1;
-    newPerfume.slug = slugify(newPerfume.name);
-    this.perfumes.push(newPerfume);
+  perfumeCreate = async (newPerfume) => {
+    try {
+      const response = await axios.post(
+        "http;//localhost:8000/perfumes",
+        newPerfume
+      );
+      this.perfumes.push(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+    // newPerfume.id = this.perfumes.length + 1;
+    // newPerfume.slug = slugify(newPerfume.name);
   };
 
   perfumeUpdate = (updatePerfume) => {

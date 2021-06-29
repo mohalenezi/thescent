@@ -1,12 +1,23 @@
 import perfumes from "../products";
 import { makeAutoObservable } from "mobx";
 import slugify from "react-slugify";
+import axios from "axios";
+
 class PerfumeStore {
-  perfumes = perfumes;
+  perfumes = [];
 
   constructor() {
     makeAutoObservable(this);
   }
+
+  fetchPerfumes = async () => {
+    try {
+      const response = await axios.get("http://localhost:8000/perfumes");
+      this.perfumes = response.data;
+    } catch (error) {
+      console.log("fetchPerfumes: ", error);
+    }
+  };
   perfumeDelete = (perfumeId) => {
     const updatedPerfumes = this.perfumes.filter(
       (perfume) => perfume.id !== perfumeId
@@ -33,5 +44,6 @@ class PerfumeStore {
 }
 
 const perfumeStore = new PerfumeStore();
+perfumeStore.fetchPerfumes();
 
 export default perfumeStore;

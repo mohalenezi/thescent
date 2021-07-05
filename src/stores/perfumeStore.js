@@ -53,10 +53,12 @@ class PerfumeStore {
       const perfume = this.perfumes.find(
         (perfume) => perfume.id === updatePerfume.id
       );
-      perfume.name = updatePerfume.name;
-      perfume.description = updatePerfume.description;
-      perfume.price = updatePerfume.price;
-      perfume.image = updatePerfume.image;
+      for (const key in updatePerfume) perfume[key] = updatePerfume[key]; //loop over the keys variable which are the attributes in each object at the array
+
+      // perfume.name = updatePerfume.name;
+      // perfume.description = updatePerfume.description;
+      // perfume.price = updatePerfume.price;
+      // perfume.image = updatePerfume.image;
       perfume.slug = slugify(updatePerfume.name);
     } catch (error) {
       console.log(error);

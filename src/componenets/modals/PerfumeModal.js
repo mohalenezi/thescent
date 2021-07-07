@@ -21,6 +21,10 @@ const PerfumeModal = (props) => {
     console.log(perfume);
   };
 
+  const handleImage = (event) => {
+    setPerfume({ ...perfume, image: event.target.files[0] });
+  };
+
   // to submit new perfume then close
 
   const handleSubmit = (event) => {
@@ -75,10 +79,9 @@ const PerfumeModal = (props) => {
             <label>Image</label>
             <input
               className="form-control"
-              type="text"
-              onChange={handleChange}
+              type="file"
+              onChange={handleImage}
               name="image"
-              value={perfume.image}
             />
           </div>
           <CreateButtonStyled>

@@ -32,9 +32,11 @@ class PerfumeStore {
 
   perfumeCreate = async (newPerfume) => {
     try {
+      const formData = new FormData();
+      for (const key in newPerfume) formData.append(key, newPerfume[key]);
       const response = await axios.post(
         "http://localhost:8000/perfumes",
-        newPerfume
+        formData
       );
       this.perfumes.push(response.data);
     } catch (error) {
@@ -46,20 +48,22 @@ class PerfumeStore {
 
   perfumeUpdate = async (updatePerfume) => {
     try {
-      await axios.put(
+      const formData = new FormData();
+      for (const key in updatePerfume) formData.append(key, updatePerfume[key]);
+      const response = await axios.put(
         `http://localhost:8000/perfumes/${updatePerfume.id}`,
-        updatePerfume
+        formData
       );
       const perfume = this.perfumes.find(
-        (perfume) => perfume.id === updatePerfume.id
+        (perfume) => perfume.id === response.data.id
       );
-      for (const key in updatePerfume) perfume[key] = updatePerfume[key]; //loop over the keys variable which are the attributes in each object at the array
+      for (const key in perfume) perfume[key] = response.data[key]; //loop over the keys variable which are the attributes in each object at the array
 
       // perfume.name = updatePerfume.name;
       // perfume.description = updatePerfume.description;
       // perfume.price = updatePerfume.price;
       // perfume.image = updatePerfume.image;
-      perfume.slug = slugify(updatePerfume.name);
+      // perfume.slug = slugify(updatePerfume.name);
     } catch (error) {
       console.log(error);
     }

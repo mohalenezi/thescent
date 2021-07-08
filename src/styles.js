@@ -12,7 +12,7 @@ P {
 }
 `;
 
-export const Navstyled = styled.nav`
+export const NavStyled = styled.nav`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
@@ -21,11 +21,11 @@ export const AiFillPlusCircleStyled = styled(AiFillPlusCircle)`
   margin-left: 70%;
 `;
 
-export const logo = styled(Link)`
+export const Logo = styled(Link)`
   padding: 10em;
 
   img {
-    width: 50%;
+    width: 30vh;
     height: 100%;
     display: block;
     margin-left: auto;
@@ -35,15 +35,18 @@ export const logo = styled(Link)`
 
 export const NavLinkStyled = styled(NavLink)`
   box-sizing: content-box;
-  width: 50%;
   display: block;
   align-text: center;
-  margin-left: 70%;
+  margin: 10px;
   font-size: 2em;
 
   &.active {
     color: ${(props) => props.theme.red};
   }
+`;
+
+export const ShopItemImage = styled.img`
+  widh: 20em;
 `;
 
 export const Title = styled.h1`
@@ -117,10 +120,10 @@ export const PerfumeWrapper = styled.div`
 `;
 export const ThemeButton = styled.button`
   font-size: 2em;
-  margin-left: 70%;
-  ${"" /* margin: 1.25em; */}
-  padding: 0.25em 1em;
-  border-radius: 3px;
+  margin-left: 40vw;
+  margin-right: 50px;
+  padding: 0.25em 3em;
+  border-radius: 1px;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;

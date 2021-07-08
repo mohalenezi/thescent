@@ -4,7 +4,9 @@ import PerfumeList from "./componenets/PerfumeList";
 import { GlobalStyle } from "./styles";
 import { useState } from "react";
 import PerfumeDetail from "./componenets/PerfumeDetail";
+import ShopDetail from "./componenets/ShopDetail";
 import Home from "./componenets/Home";
+import ShopList from "./componenets/ShopList";
 
 import { Route, Switch } from "react-router";
 import NavBar from "./componenets/NavBar";
@@ -41,6 +43,12 @@ function App() {
           </Route>
           <Route path="/perfumes">
             <PerfumeList />
+          </Route>
+          <Route path="/shops/:shopSlug">
+            <ShopDetail />
+          </Route>
+          <Route path="/shops">
+            <ShopList />
           </Route>
           <Route exact path="/">
             <Home />

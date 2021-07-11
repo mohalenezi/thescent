@@ -1,18 +1,19 @@
 import { observer } from "mobx-react";
-import { ShopItemImage } from "../styles";
+import { ShopItemImage, PerfumeWrapper } from "../styles";
 import { Link } from "react-router-dom";
 
 const ShopItem = ({ shop }) => {
-  return;
-  <>
-    <PerfumeWrapper>
-      <Link to={`/perfumes/${props.perfume.slug}`}>
-        <img alt={props.perfume.name} src={props.perfume.image} />
-      </Link>
-      <p>{shop.name}</p>
-      <ShopItemImage src={shop.image} alt={shop.name} />
-    </PerfumeWrapper>
-  </>;
+  console.log(shop.slug);
+  return (
+    <>
+      <PerfumeWrapper>
+        <Link to={`/shops/${shop.slug}`}>
+          <img alt={shop.name} src={shop.image} />
+        </Link>
+        <p>{shop.name}</p>
+      </PerfumeWrapper>
+    </>
+  );
 };
 
 export default observer(ShopItem);

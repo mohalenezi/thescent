@@ -3,10 +3,10 @@ import "./App.css";
 import PerfumeList from "./componenets/PerfumeList";
 import { GlobalStyle } from "./styles";
 import { useState } from "react";
+import ShopList from "./componenets/ShopList";
 import PerfumeDetail from "./componenets/PerfumeDetail";
 import ShopDetail from "./componenets/ShopDetail";
 import Home from "./componenets/Home";
-import ShopList from "./componenets/ShopList";
 
 import { Route, Switch } from "react-router";
 import NavBar from "./componenets/NavBar";

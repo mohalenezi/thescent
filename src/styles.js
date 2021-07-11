@@ -178,3 +178,15 @@ export const UpdateButtonStyled = styled.button`
   display: inline-block;
   font-size: 16px;
 `;
+
+export const AuthButtonStyled = styled.button`
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-left: 0%.5em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1em;
+`;

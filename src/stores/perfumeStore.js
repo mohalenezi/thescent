@@ -1,10 +1,11 @@
 import perfumes from "../products";
 import { makeAutoObservable } from "mobx";
 import slugify from "react-slugify";
-import axios from "axios";
+import instance from "./instance";
 
 class PerfumeStore {
   perfumes = [];
+  loading = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -12,15 +13,16 @@ class PerfumeStore {
 
   fetchPerfumes = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/perfumes");
+      const response = await instance.get("/perfumes");
       this.perfumes = response.data;
+      this.loading = false;
     } catch (error) {
       console.log("fetchPerfumes: ", error);
     }
   };
   perfumeDelete = async (perfumeId) => {
     try {
-      await axios.delete(`http://localhost:8000/perfumes/${perfumeId}`);
+      await instance.delete(`/perfumes/${perfumeId}`);
       const updatedPerfumes = this.perfumes.filter(
         (perfume) => perfume.id !== perfumeId
       );
@@ -34,10 +36,7 @@ class PerfumeStore {
     try {
       const formData = new FormData();
       for (const key in newPerfume) formData.append(key, newPerfume[key]);
-      const response = await axios.post(
-        "http://localhost:8000/perfumes",
-        formData
-      );
+      const response = await instance.post("/perfumes", formData);
       this.perfumes.push(response.data);
     } catch (error) {
       console.log(error);
@@ -50,8 +49,8 @@ class PerfumeStore {
     try {
       const formData = new FormData();
       for (const key in updatePerfume) formData.append(key, updatePerfume[key]);
-      const response = await axios.put(
-        `http://localhost:8000/perfumes/${updatePerfume.id}`,
+      const response = await instance.put(
+        `/perfumes/${updatePerfume.id}`,
         formData
       );
       const perfume = this.perfumes.find(

@@ -7,6 +7,7 @@ import {
   LogoImage,
   NavStyled,
 } from "../styles";
+import SignupButton from "./buttons/SignupButton";
 
 //themes logo
 import lightLogo from "../images/wTheme.png";
@@ -42,6 +43,7 @@ function NavBar(props) {
             >
               {props.currentTheme === "light" ? "Dark" : "Light"} mode
             </ThemeButton>
+            <SignupButton />
             <NavLinkStyled to="/perfumes" className="nav-item">
               Perfumes
             </NavLinkStyled>

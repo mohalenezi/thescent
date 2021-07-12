@@ -1,15 +1,17 @@
 import { ThemeProvider } from "styled-components";
 import "./App.css";
-import PerfumeList from "./componenets/PerfumeList";
 import { GlobalStyle } from "./styles";
+// libraries //
 import { useState } from "react";
-import ShopList from "./componenets/ShopList";
-import PerfumeDetail from "./componenets/PerfumeDetail";
-import ShopDetail from "./componenets/ShopDetail";
-import Home from "./componenets/Home";
 
-import { Route, Switch } from "react-router";
 import NavBar from "./componenets/NavBar";
+import Routes from "./componenets/Routes";
+
+import { observer } from "mobx-react";
+
+//== stores ==//
+import shopStore from "./stores/shopStore";
+import perfumeStore from "./stores/perfumeStore";
 
 const theme = {
   light: {
@@ -37,29 +39,17 @@ function App() {
       <ThemeProvider theme={theme[currentTheme]}>
         <GlobalStyle />
         <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
-        <Switch>
-          <Route path="/perfumes/:perfumeSlug">
-            <PerfumeDetail />
-          </Route>
-          <Route path="/perfumes">
-            <PerfumeList />
-          </Route>
-          <Route path="/shops/:shopSlug">
-            <ShopDetail />
-          </Route>
-          <Route path="/shops">
-            <ShopList />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
+        {shopStore.loading || perfumeStore.loading ? (
+          <h1>loading...</h1>
+        ) : (
+          <Routes />
+        )}
       </ThemeProvider>
     </div>
   );
 }
 
-export default App;
+export default observer(App);
 {
   /* <NavLinkStyled to="/perfumes">Perfumes</NavLinkStyled>
           <ThemeButton onClick={toggleTheme}>

@@ -30,7 +30,7 @@ const PerfumeModal = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (props.previousPerfume) perfumeStore.perfumeUpdate(perfume);
-    else perfumeStore.perfumeCreate(perfume);
+    else perfumeStore.perfumeCreate(perfume, props.shop);
     props.closeModal();
   };
 

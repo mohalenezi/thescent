@@ -1,18 +1,18 @@
 import { useState } from "react";
-import shopStore from "../stores/shopStore";
 import { observer } from "mobx-react";
+import shopStore from "../stores/shopStore";
 
 import ShopItem from "./ShopItem";
-import ShopModal from "./modals/ShopModal";
 import SearchBar from "./SearchBar";
+import ShopModal from "./modals/ShopModal";
 import { Title, ListWrapper, AiFillPlusCircleStyled } from "../styles";
 
 const ShopList = () => {
   const [querry, setQuerry] = useState("");
-  // const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // const openModal = () => setIsOpen(true);
-  // const closeModal = () => setIsOpen(false);
+  const openModal = () => setIsOpen(true);
+  const closeModal = () => setIsOpen(false);
 
   const shops = shopStore.shops
     .filter((shop) => shop.name.toLowerCase().includes(querry.toLowerCase()))
@@ -22,8 +22,8 @@ const ShopList = () => {
     <div className="container">
       <Title>Shops</Title>
       <SearchBar setQuerry={setQuerry} />
-      {/* <AiFillPlusCircleStyled size="5em" onClick={openModal} /> */}
-      {/* <ShopModal isOpen={isOpen} closeModal={closeModal} /> */}
+      <AiFillPlusCircleStyled size="5em" onClick={openModal} />
+      <ShopModal isOpen={isOpen} closeModal={closeModal} />
       <ListWrapper>{shops}</ListWrapper>;
     </div>
   );

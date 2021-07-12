@@ -2,6 +2,7 @@ import perfumes from "../products";
 import { makeAutoObservable } from "mobx";
 import slugify from "react-slugify";
 import instance from "./instance";
+import shopStore from "./shopStore";
 
 class PerfumeStore {
   perfumes = [];
@@ -32,12 +33,16 @@ class PerfumeStore {
     }
   };
 
-  perfumeCreate = async (newPerfume) => {
+  perfumeCreate = async (newPerfume, shop) => {
     try {
       const formData = new FormData();
       for (const key in newPerfume) formData.append(key, newPerfume[key]);
-      const response = await instance.post("/perfumes", formData);
+      const response = await instance.post(
+        `/shops/${shop.id}/perfumes`,
+        formData
+      );
       this.perfumes.push(response.data);
+      shop.perfumes.push({ id: response.data.id });
     } catch (error) {
       console.log(error);
     }
@@ -67,6 +72,9 @@ class PerfumeStore {
       console.log(error);
     }
   };
+
+  getPerfumeById = (perfumeId) =>
+    this.perfumes.find((perfume) => perfume.id === perfumeId);
 }
 
 const perfumeStore = new PerfumeStore();

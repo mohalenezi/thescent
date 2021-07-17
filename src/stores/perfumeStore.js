@@ -1,8 +1,5 @@
-import perfumes from "../products";
 import { makeAutoObservable } from "mobx";
-import slugify from "react-slugify";
 import instance from "./instance";
-import shopStore from "./shopStore";
 
 class PerfumeStore {
   perfumes = [];

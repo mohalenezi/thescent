@@ -1,12 +1,13 @@
-// import perfumes from "../products";
-
 import { observer } from "mobx-react";
+import { useState } from "react";
 
+//styles
 import { ListWrapper, AiFillPlusCircleStyled } from "../styles";
+
+//components
 import PerfumeItem from "./PerfumeItem";
 import PerfumeModal from "./modals/PerfumeModal";
 import SearchBar from "./SearchBar";
-import { useState } from "react";
 
 //stores
 import authStore from "../stores/authStore";

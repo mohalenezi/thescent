@@ -4,7 +4,18 @@ import { useState } from "react";
 import { CreateButtonStyled } from "../../styles";
 import authStore from "../../stores/authStore";
 
-const SignupModal = (props) => {
+const customStyles = {
+  content: {
+    top: "30%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
+const SigninModal = (props) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -16,7 +27,7 @@ const SignupModal = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    authStore.signup(user);
+    authStore.signin(user);
     props.closeModal();
   };
 
@@ -25,7 +36,8 @@ const SignupModal = (props) => {
       <Modal
         isOpen={props.isOpen}
         onRequestClose={props.closeModal}
-        contentLabel="Signup Modal"
+        style={customStyles}
+        contentLabel="Signin Modal"
       >
         <form onSubmit={handleSubmit}>
           <div className="form-group row">
@@ -48,11 +60,11 @@ const SignupModal = (props) => {
               />
             </div>
           </div>
-          <CreateButtonStyled>Signup</CreateButtonStyled>
+          <CreateButtonStyled>Signin</CreateButtonStyled>
         </form>
       </Modal>
     </div>
   );
 };
 
-export default SignupModal;
+export default SigninModal;

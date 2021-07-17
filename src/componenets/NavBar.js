@@ -1,4 +1,6 @@
 import React from "react";
+import { observer } from "mobx-react";
+
 //style
 import {
   ThemeButton,
@@ -6,12 +8,18 @@ import {
   Logo,
   LogoImage,
   NavStyled,
+  SignoutStyled,
 } from "../styles";
+
 import SignupButton from "./buttons/SignupButton";
+import SigninButton from "./buttons/SigninButton";
 
 //themes logo
 import lightLogo from "../images/wTheme.png";
 import darkLogo from "../images/bTheme.png";
+
+// stores
+import authStore from "../stores/authStore";
 
 function NavBar(props) {
   return (
@@ -43,7 +51,17 @@ function NavBar(props) {
             >
               {props.currentTheme === "light" ? "Dark" : "Light"} mode
             </ThemeButton>
-            <SignupButton />
+            {authStore.user ? (
+              <>
+                <p>Hello, {authStore.user.username}</p>
+                <SignoutStyled onClick={authStore.signout}></SignoutStyled>
+              </>
+            ) : (
+              <>
+                <SigninButton />
+                <SignupButton />
+              </>
+            )}
             <NavLinkStyled to="/perfumes" className="nav-item">
               Perfumes
             </NavLinkStyled>
@@ -57,4 +75,4 @@ function NavBar(props) {
   );
 }
 
-export default NavBar;
+export default observer(NavBar);

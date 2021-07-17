@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -189,4 +190,10 @@ export const AuthButtonStyled = styled.button`
   text-decoration: none;
   display: inline-block;
   font-size: 1em;
+`;
+
+export const SignoutStyled = styled(FaSignOutAlt)`
+  color: ${(props) => props.theme.red};
+  size: "2em";
+  margin: 5px;
 `;

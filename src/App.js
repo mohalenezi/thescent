@@ -1,13 +1,12 @@
+// libraries //
+import { useState } from "react";
+import { observer } from "mobx-react";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 import { GlobalStyle } from "./styles";
-// libraries //
-import { useState } from "react";
 
 import NavBar from "./componenets/NavBar";
 import Routes from "./componenets/Routes";
-
-import { observer } from "mobx-react";
 
 //== stores ==//
 import shopStore from "./stores/shopStore";

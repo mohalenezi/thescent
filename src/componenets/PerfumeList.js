@@ -8,6 +8,9 @@ import PerfumeModal from "./modals/PerfumeModal";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 
+//stores
+import authStore from "../stores/authStore";
+
 const PerfumeList = ({ perfumes, shop }) => {
   const [querry, setQuerry] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +27,9 @@ const PerfumeList = ({ perfumes, shop }) => {
   return (
     <div>
       <SearchBar setQuerry={setQuerry} />
-      <AiFillPlusCircleStyled size="5em" onClick={openModal} />
+      {authStore.user && (
+        <AiFillPlusCircleStyled size="2em" onClick={openModal} />
+      )}
       <PerfumeModal isOpen={isOpen} closeModal={closeModal} shop={shop} />
       <ListWrapper>{perfumesList}</ListWrapper>;
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { observer } from "mobx-react";
 import shopStore from "../stores/shopStore";
+import authStore from "../stores/authStore";
 
 import ShopItem from "./ShopItem";
 import SearchBar from "./SearchBar";
@@ -22,7 +23,9 @@ const ShopList = () => {
     <div className="container">
       <Title>Shops</Title>
       <SearchBar setQuerry={setQuerry} />
-      <AiFillPlusCircleStyled size="5em" onClick={openModal} />
+      {authStore.user && (
+        <AiFillPlusCircleStyled size="2em" onClick={openModal} />
+      )}
       <ShopModal isOpen={isOpen} closeModal={closeModal} />
       <ListWrapper>{shops}</ListWrapper>;
     </div>
